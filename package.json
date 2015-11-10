@@ -1,0 +1,19 @@
+{
+  "name": "generator-cfml-fw1",
+  "version": "0.1.0",
+  "description": "A cfml/fw1 generator for Yeoman",
+  "files": [
+    "generators/app"
+  ],
+  "keywords": [
+    "yeoman-generator",
+    "fw/1",
+    "cfml",
+    "coldfusion"
+  ],
+  "dependencies": {
+    "mkdirp": "^0.5.1",
+    "slug": "^0.9.1",
+    "yeoman-generator": "^0.21.1"
+  }
+}
