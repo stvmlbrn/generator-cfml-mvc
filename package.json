@@ -1,7 +1,7 @@
 {
-  "name": "generator-cfml-fw1",
+  "name": "generator-cfml-mvc",
   "version": "0.1.0",
-  "description": "A cfml/fw1 generator for Yeoman",
+  "description": "A cfml mvc generator for Yeoman",
   "files": [
     "generators/app"
   ],
@@ -9,7 +9,8 @@
     "yeoman-generator",
     "fw/1",
     "cfml",
-    "coldfusion"
+    "coldfusion",
+    "mvc"
   ],
   "dependencies": {
     "mkdirp": "^0.5.1",
