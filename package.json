@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "A cfml mvc generator for Yeoman",
   "files": [
-    "generators/app"
+    "app"
   ],
   "keywords": [
     "yeoman-generator",
