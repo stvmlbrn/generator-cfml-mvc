@@ -93,7 +93,7 @@ module.exports = generators.Base.extend({
 			}
 
 			//copy FW/1
-			this.sourceRoot(path.join(__dirname, 'frameworks', 'fw1'));
+			this.sourceRoot(path.join(__dirname, 'frameworks', 'fw1', 'src'));
 			this.directory('.', 'framework');
 
 			//copy tool configs
