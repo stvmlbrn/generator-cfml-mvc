@@ -82,6 +82,42 @@ module.exports = generators.Base.extend({
 				this.options.subsystems = response.useSubsystems;
 				done();
 			}.bind(this));
+		},
+
+		datasource: function() {
+			if (this.options.datasource !== undefined) {
+				return true;
+			}
+
+			var done = this.async();
+			var prompt = [{
+				type: 'input',
+				name: 'datasource',
+				message: 'Enter the primary application datasource name'
+			}];
+
+			this.prompt(prompt, function(response) {
+				this.datasource = response.datasource;
+				done();
+			}.bind(this));
+		},
+
+		reloadpw: function() {
+			if (this.options.reloadPassword !== undefined) {
+				return true;
+			}
+
+			var done = this.async();
+			var prompt = [{
+				type: 'input',
+				name: 'reloadPassword',
+				message: 'Enter the password used to reload the application'
+			}];
+
+			this.prompt(prompt, function(response) {
+				this.reloadPassword = response.reloadPassword;
+				done();
+			}.bind(this));
 		}
 	},
 
@@ -92,9 +128,9 @@ module.exports = generators.Base.extend({
 				this.destinationRoot(this.options.dirname);
 			}
 
-			//copy FW/1
-			this.sourceRoot(path.join(__dirname, 'frameworks', 'fw1', 'src'));
-			this.directory('.', 'framework');
+			//copy FW/1, application.cfc, and index.cfm
+			this.sourceRoot(path.join(__dirname, 'fw1'));
+			this.directory('.', '.');
 
 			//copy tool configs
 			this.sourceRoot(path.join(__dirname, 'templates', 'extras'));
@@ -111,6 +147,8 @@ module.exports = generators.Base.extend({
 	},
 
 	install: function() {
-		this.installDependencies();
+		if (!this.options['skip-install']) {
+			//this.installDependencies();
+		}
 	}
 });
