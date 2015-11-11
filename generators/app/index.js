@@ -63,6 +63,24 @@ module.exports = generators.Base.extend({
 				this.options.dirname = response.dirname;
 				done();
 			}.bind(this));
+		},
+
+		subsystems: function() {
+			if (this.options.subsystems !== undefined) {
+				return true;
+			}
+
+			var done = this.async();
+			var prompt = [{
+				type: 'confirm',
+				name: 'useSubsystems',
+				message: 'Would you like to enable subsystems?'
+			}];
+
+			this.prompt(prompt, function(response) {
+				this.options.subsystems = response.useSubsystems;
+				done();
+			}.bind(this));
 		}
 	},
 
