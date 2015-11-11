@@ -16,7 +16,7 @@
   "bugs": "https://github.com/stevemilburn/generator-cfml-mvc/issues",
   "author": {
     "name": "Steve Milburn",
-    "email": "scmilburn@gmail.com",
+    "email": "scmilburn@gmail.com"
   },
   "main": "app/index.js",
   "repository": {
