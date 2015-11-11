@@ -93,6 +93,10 @@ module.exports = generators.Base.extend({
 
 			//grunt
 			this.copy(path.join(__dirname, 'templates', 'extras', 'Gruntfile.js'), 'Gruntfile.js');
+
+			//copy FW/1
+			this.sourceRoot(path.join(__dirname, 'frameworks', 'fw1'));
+			this.directory('.', 'framework');
 		},
 
 		assetsDirs: function() {
