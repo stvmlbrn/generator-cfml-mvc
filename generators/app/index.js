@@ -2,6 +2,7 @@ var generators = require('yeoman-generator');
 var path = require('path');
 var mkdirp = require('mkdirp');
 var slug = require('slug');
+var glob = require('glob');
 
 module.exports = generators.Base.extend({
 	constructor: function() {
@@ -91,12 +92,13 @@ module.exports = generators.Base.extend({
 				this.destinationRoot(this.options.dirname);
 			}
 
-			//grunt
-			this.copy(path.join(__dirname, 'templates', 'extras', 'Gruntfile.js'), 'Gruntfile.js');
-
 			//copy FW/1
 			this.sourceRoot(path.join(__dirname, 'frameworks', 'fw1'));
 			this.directory('.', 'framework');
+
+			//copy tool configs
+			this.sourceRoot(path.join(__dirname, 'templates', 'extras'));
+			this.directory('.', '.');
 		},
 
 		assetsDirs: function() {
@@ -109,6 +111,6 @@ module.exports = generators.Base.extend({
 	},
 
 	install: function() {
-		//this.installDependencies();
+		this.installDependencies();
 	}
 });

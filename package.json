@@ -13,6 +13,7 @@
     "mvc"
   ],
   "dependencies": {
+    "glob": "^5.0.15",
     "mkdirp": "^0.5.1",
     "slug": "^0.9.1",
     "yeoman-generator": "^0.21.1"

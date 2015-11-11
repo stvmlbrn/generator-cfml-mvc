@@ -1,29 +1,10 @@
 {
-  "name": "Scaffolding",
+  "name": "<%= slug(appname) %>",
   "description": "",
-  "main": "",
-  "authors": [
-    "Steve Milburn <scmilburn@gmail.com>"
-  ],
-  "license": "MIT",
-  "homepage": "https://github.com/stevemilburn/scaffolding",
-  "moduleType": [
-    "node"
-  ],
-  "private": true,
+  "version": "0.0.1",
   "ignore": [
     "**/.*",
     "node_modules",
-    "bower_components",
-    "/assets/libs",
-    "test",
-    "tests"
-  ],
-  "dependencies": {
-    "font-awesome": "~4.4.0",
-    "bootstrap": "~3.3.5",
-    "jquery": "~2.1.4",
-    "handlebars": "~4.0.4",
-    "html5-boilerplate": "~5.2.0"
-  }
+    "components"
+  ]
 }
