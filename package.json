@@ -12,10 +12,26 @@
     "coldfusion",
     "mvc"
   ],
+  "homepage": "https://github.com/stevemilburn/generator-cfml-mvc",
+  "bugs": "https://github.com/stevemilburn/generator-cfml-mvc/issues",
+  "author": {
+    "name": "Steve Milburn",
+    "email": "scmilburn@gmail.com",
+  },
+  "main": "app/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stevemilburn/generator-cfml-mvc.git"
+  },
   "dependencies": {
     "glob": "^5.0.15",
     "mkdirp": "^0.5.1",
     "slug": "^0.9.1",
     "yeoman-generator": "^0.21.1"
-  }
+  },
+  "licenses": [
+    {
+      "type": "MIT"
+    }
+  ]
 }
