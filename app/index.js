@@ -3,6 +3,7 @@ var path = require('path');
 var mkdirp = require('mkdirp');
 var slug = require('slug');
 var glob = require('glob');
+var _ = require('lodash');
 
 module.exports = generators.Base.extend({
 	constructor: function() {
@@ -66,24 +67,6 @@ module.exports = generators.Base.extend({
 			}.bind(this));
 		},
 
-		subsystems: function() {
-			if (this.options.subsystems !== undefined) {
-				return true;
-			}
-
-			var done = this.async();
-			var prompt = [{
-				type: 'confirm',
-				name: 'useSubsystems',
-				message: 'Would you like to enable subsystems?'
-			}];
-
-			this.prompt(prompt, function(response) {
-				this.options.subsystems = response.useSubsystems;
-				done();
-			}.bind(this));
-		},
-
 		datasource: function() {
 			if (this.options.datasource !== undefined) {
 				return true;
@@ -118,7 +101,43 @@ module.exports = generators.Base.extend({
 				this.reloadPassword = response.reloadPassword;
 				done();
 			}.bind(this));
-		}
+		},
+
+    subsystems: function() {
+      if (this.options.subsystems !== undefined) {
+        return true;
+      }
+
+      var done = this.async();
+      var prompt = [{
+        type: 'confirm',
+        name: 'useSubsystems',
+        message: 'Would you like to enable subsystems?'
+      }];
+
+      this.prompt(prompt, function(response) {
+        this.options.subsystems = response.useSubsystems;
+        done();
+      }.bind(this));
+    },
+
+    subsystemnames: function() {
+      if (!this.options.subsystems) {
+        return true;
+      }
+
+      var done = this.async();
+      var prompt = [{
+        type: 'input',
+        name: 'systemnames',
+        message: 'Enter the name of your initial subsystems separated by a comma (",")'
+      }];
+
+      this.prompt(prompt, function(response) {
+        this.options.subsystemnames = response.systemnames;
+        done();
+      }.bind(this));
+    }
 	},
 
 	writing: {
@@ -129,8 +148,31 @@ module.exports = generators.Base.extend({
 			}
 
 			//copy FW/1, application.cfc, and index.cfm
-			this.sourceRoot(path.join(__dirname, 'fw1'));
-			this.directory('.', '.');
+			this.sourceRoot(path.join(__dirname, 'fw1', 'framework'));
+			this.directory('.', 'framework');
+
+      //copy app scaffolding
+      this.sourceRoot(path.join(__dirname, 'fw1', 'scaffolding'));
+      this.directory('.', 'app');
+      //no default files for the 'model' folder, so need to create manually
+      mkdirp.sync('app/model/services');
+      mkdirp.sync('app/model/beans');
+
+      //create subsystems folder and build out subystem scaffolding if necessary
+      if (this.options.subsystems) {
+        mkdirp.sync('app/subsystems');
+        var subsystems = this.options.subsystemnames.split(',');
+
+        for (var i=0; i<subsystems.length; i++) {
+          var system = slug(_.trim(subsystems[i]));
+          //copy app scaffolding
+          this.sourceRoot(path.join(__dirname, 'fw1', 'scaffolding'));
+          this.directory('.', 'app/subsystems/' + system);
+          //no default files for the 'model' folder, so need to create manually
+          mkdirp.sync('app/subsystems/' + system + '/model/services');
+          mkdirp.sync('app/subsystems/' + system + '/model/beans');
+        }
+      }
 
 			//copy tool configs
 			this.sourceRoot(path.join(__dirname, 'templates', 'extras'));
