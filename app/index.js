@@ -92,9 +92,9 @@ module.exports = generators.Base.extend({
 
 			var done = this.async();
 			var prompt = [{
-				type: 'input',
+				type: 'password',
 				name: 'reloadPassword',
-				message: 'Enter the password used to reload the application'
+				message: 'Enter the password used to reload the application in production'
 			}];
 
 			this.prompt(prompt, function(response) {
