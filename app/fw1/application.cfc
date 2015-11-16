@@ -1,5 +1,5 @@
 component extends='framework.one' {
-	this.sessionManagement = true;
+  this.sessionManagement = true;
   this.scriptprotect = 'all';
   this.sessionTimeout = createTimeSpan(0,1,0,0);
   this.applicationTimeout = createTimeSpan(0,7,0,0);
@@ -31,9 +31,6 @@ component extends='framework.one' {
   }
   // **********************************************************************************************
   function setupApplication() {
-    /*
-    The config.json is a good place to keep email address, api keys, and environment specific settings.
-    */
     var config = deserializeJSON(fileRead(expandPath('/config/config.json')));
     application.config = config[getEnvironment()];
   }

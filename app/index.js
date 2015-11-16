@@ -147,9 +147,14 @@ module.exports = generators.Base.extend({
 				this.destinationRoot(this.options.dirname);
 			}
 
-			//copy FW/1, application.cfc, and index.cfm
+			//copy FW/1
 			this.sourceRoot(path.join(__dirname, 'fw1', 'framework'));
 			this.directory('.', 'framework');
+
+      //copy application.cfc and index.cfm
+      this.sourceRoot(path.join(__dirname, 'fw1'));
+      this.copy('application.cfc','./application.cfc');
+      this.copy('index.cfm','./index.cfm');
 
       //copy config folder
       this.sourceRoot(path.join(__dirname, 'fw1', 'config'));
