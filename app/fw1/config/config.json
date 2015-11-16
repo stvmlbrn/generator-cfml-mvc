@@ -1,0 +1,12 @@
+{
+  "dev": {
+    "adminEmail": "",
+    "projectName": "Dev-<%= appname %>",
+    "assetsFolder": "src"
+  },
+  "prod": {
+    "adminEmail": "",
+    "projectName": "<%= appname %>",
+    "assetsFolder": "dist"
+  }
+}

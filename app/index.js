@@ -151,6 +151,10 @@ module.exports = generators.Base.extend({
 			this.sourceRoot(path.join(__dirname, 'fw1', 'framework'));
 			this.directory('.', 'framework');
 
+      //copy config folder
+      this.sourceRoot(path.join(__dirname, 'fw1', 'config'));
+      this.directory('.', 'config');
+
       //copy app scaffolding
       this.sourceRoot(path.join(__dirname, 'fw1', 'scaffolding'));
       this.directory('.', 'app');
