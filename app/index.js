@@ -9,6 +9,9 @@ module.exports = generators.Base.extend({
 	constructor: function() {
 		generators.Base.apply(this, arguments);
 
+    //add skip-install option
+    this.option('skip-install');
+
 		this.slug = slug;
 	},
 
@@ -200,7 +203,7 @@ module.exports = generators.Base.extend({
 
 	install: function() {
 		if (!this.options['skip-install']) {
-			//this.installDependencies();
+			this.installDependencies();
 		}
 	}
 });
