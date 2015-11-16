@@ -112,7 +112,7 @@ module.exports = generators.Base.extend({
       var prompt = [{
         type: 'confirm',
         name: 'useSubsystems',
-        message: 'Would you like to enable subsystems?'
+        message: 'Would you like to configure subsystems?'
       }];
 
       this.prompt(prompt, function(response) {
@@ -163,6 +163,7 @@ module.exports = generators.Base.extend({
         mkdirp.sync('app/subsystems');
         var subsystems = this.options.subsystemnames.split(',');
 
+        //Problem here.... scaffolding folders are created even if no subsystem name was specified
         for (var i=0; i<subsystems.length; i++) {
           var system = slug(_.trim(subsystems[i]));
           //copy app scaffolding
