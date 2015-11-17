@@ -10,7 +10,6 @@
   "dependencies": {
     "bootstrap": "~3.3.5",
     "jquery": "~2.1.4",
-    "font-awesome": "~4.4.0",
-    "html5-boilerplate": "~5.2.0"
+    "font-awesome": "~4.4.0"
   }
 }
