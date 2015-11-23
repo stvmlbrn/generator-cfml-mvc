@@ -7,7 +7,7 @@ A Yeoman generator for scaffolding modern ColdFusion apps.
 * Bower package manager
 * .editorconfig for consitent coding styles within text editors
 * Define application level datasource
-* Enable and define subsystems
+* Enable and define subsystems ([subsystems version 2.0](http://framework-one.github.io/documentation/using-subsystems.html#subsystems-10-vs-20))
 
 ## Getting Started
 * Make sure you have [yo](http://yeoman.io) install: `npm install -g yo`
