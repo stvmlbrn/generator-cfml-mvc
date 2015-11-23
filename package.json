@@ -1,7 +1,7 @@
 {
   "name": "generator-cfml-mvc",
   "version": "1.0.1",
-  "description": "A cfml mvc generator for Yeoman",
+  "description": "A ColdFusion MVC generator for Yeoman",
   "files": [
     "app"
   ],
