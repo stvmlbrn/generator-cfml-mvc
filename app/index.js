@@ -174,9 +174,9 @@ module.exports = generators.Base.extend({
       //create subsystems folder and build out subystem scaffolding if necessary
       if (this.options.subsystems) {
         mkdirp.sync('app/subsystems');
+        var subsystems = this.options.subsystemnames.split(',');
+        var system;
         if (_.trim(subsystems).length > 0) {
-          var subsystems = this.options.subsystemnames.split(',');
-          var system;
           for (var i=0; i<subsystems.length; i++) {
             system = slug(_.trim(subsystems[i]));
             //copy app scaffolding
