@@ -115,7 +115,7 @@ module.exports = generators.Base.extend({
       var prompt = [{
         type: 'confirm',
         name: 'useSubsystems',
-        message: 'Would you like to configure subsystems?'
+        message: 'Would you like add subsystems now?'
       }];
 
       this.prompt(prompt, function(response) {
@@ -173,17 +173,17 @@ module.exports = generators.Base.extend({
       //create subsystems folder and build out subystem scaffolding if necessary
       if (this.options.subsystems) {
         mkdirp.sync('app/subsystems');
-        var subsystems = this.options.subsystemnames.split(',');
-
-        //Problem here.... scaffolding folders are created even if no subsystem name was specified
-        for (var i=0; i<subsystems.length; i++) {
-          var system = slug(_.trim(subsystems[i]));
-          //copy app scaffolding
-          this.sourceRoot(path.join(__dirname, 'fw1', 'scaffolding'));
-          this.directory('.', 'app/subsystems/' + system);
-          //no default files for the 'model' folder, so need to create manually
-          mkdirp.sync('app/subsystems/' + system + '/model/services');
-          mkdirp.sync('app/subsystems/' + system + '/model/beans');
+        if (_.trim(subsystems).length > 0) {
+          var subsystems = this.options.subsystemnames.split(',');
+          for (var i=0; i<subsystems.length; i++) {
+            var system = slug(_.trim(subsystems[i]));
+            //copy app scaffolding
+            this.sourceRoot(path.join(__dirname, 'fw1', 'scaffolding'));
+            this.directory('.', 'app/subsystems/' + system);
+            //no default files for the 'model' folder, so need to create manually
+            mkdirp.sync('app/subsystems/' + system + '/model/services');
+            mkdirp.sync('app/subsystems/' + system + '/model/beans');
+          }
         }
       }
 
