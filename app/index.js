@@ -166,6 +166,7 @@ module.exports = generators.Base.extend({
       //copy app scaffolding
       this.sourceRoot(path.join(__dirname, 'fw1', 'scaffolding'));
       this.directory('.', 'app');
+
       //no default files for the 'model' folder, so need to create manually
       mkdirp.sync('app/model/services');
       mkdirp.sync('app/model/beans');
@@ -175,8 +176,9 @@ module.exports = generators.Base.extend({
         mkdirp.sync('app/subsystems');
         if (_.trim(subsystems).length > 0) {
           var subsystems = this.options.subsystemnames.split(',');
+          var system;
           for (var i=0; i<subsystems.length; i++) {
-            var system = slug(_.trim(subsystems[i]));
+            system = slug(_.trim(subsystems[i]));
             //copy app scaffolding
             this.sourceRoot(path.join(__dirname, 'fw1', 'scaffolding'));
             this.directory('.', 'app/subsystems/' + system);
