@@ -10,7 +10,7 @@ A Yeoman generator for scaffolding modern ColdFusion apps.
 * Enable and define subsystems ([subsystems version 2.0](http://framework-one.github.io/documentation/using-subsystems.html#subsystems-10-vs-20))
 
 ## Getting Started
-* Make sure you have [yo](http://yeoman.io) install: `npm install -g yo`
+* Make sure you have [yo](http://yeoman.io) installed: `npm install -g yo`
 * Install the generator: `npm install -g generator-cfml-mvc`
 * Run `yo cfml-mvc` and follow the prompts
 
