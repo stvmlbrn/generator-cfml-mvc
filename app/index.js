@@ -150,6 +150,12 @@ module.exports = generators.Base.extend({
 				this.destinationRoot(this.options.dirname);
 			}
 
+      if (this.options['skip-install']) {
+        this.skipInstall = true;
+      } else {
+        this.skipInstall = false;
+      }
+
 			//copy FW/1
 			this.sourceRoot(path.join(__dirname, 'fw1', 'framework'));
 			this.directory('.', 'framework');
