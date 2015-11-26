@@ -190,7 +190,7 @@ module.exports = generators.Base.extend({
       }
 
 			//copy tool configs
-			this.sourceRoot(path.join(__dirname, 'templates', 'extras'));
+			this.sourceRoot(path.join(__dirname, 'tools'));
 			this.directory('.', '.');
 		},
 
