@@ -2,11 +2,13 @@
   "dev": {
     "adminEmail": "",
     "projectName": "Dev-<%= appname %>",
-    "assetsFolder": "src"
+    "assetsFolder": "src",
+    "environment": "dev"
   },
   "prod": {
     "adminEmail": "",
     "projectName": "<%= appname %>",
-    "assetsFolder": "dist"
+    "assetsFolder": "dist",
+    "environment": "prod"
   }
 }
