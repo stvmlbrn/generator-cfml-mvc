@@ -140,6 +140,25 @@ module.exports = generators.Base.extend({
         this.options.subsystemnames = response.systemnames;
         done();
       }.bind(this));
+    },
+
+    dependencyManager: function() {
+      if (this.options.dependencyManager !== undefined) {
+        return true;
+      }
+
+      var done = this.async();
+      var prompt = [{
+        type: 'list',
+        name: 'dependencyManager',
+        message: 'Select a front-end dependency manager',
+        choices: ['Bower', 'NPM', 'None']
+      }];
+
+      this.prompt(prompt, function(response) {
+        this.dependencyManager = response.dependencyManager;
+        done();
+      }.bind(this));
     }
 	},
 
@@ -150,6 +169,8 @@ module.exports = generators.Base.extend({
 				this.destinationRoot(this.options.dirname);
 			}
 
+      //need to know if user skipped bower and npm to determine whether to
+      //load css and js files in default layout.
       if (this.options['skip-install']) {
         this.skipInstall = true;
       } else {
@@ -195,9 +216,15 @@ module.exports = generators.Base.extend({
         }
       }
 
-			//copy tool configs
+			//copy tools
 			this.sourceRoot(path.join(__dirname, 'tools'));
 			this.directory('.', '.');
+
+      //copy bower settings if selected as front-end dependency manager
+      if (this.dependencyManager === 'Bower') {
+        this.sourceRoot(path.join(__dirname, 'bower'));
+        this.directory('.', '.');
+      }
 		},
 
 		assetsDirs: function() {
@@ -211,7 +238,10 @@ module.exports = generators.Base.extend({
 
 	install: function() {
 		if (!this.options['skip-install']) {
-			this.installDependencies();
+      this.npmInstall();
+      if (this.dependencyManager === 'Bower') {
+        this.bowerInstall();
+      }
 		}
 	}
 });

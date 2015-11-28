@@ -2,6 +2,13 @@
 	"name": "<%= slug(appname) %>",
 	"version": "0.0.1",
 	"private": true,
+	<%if (dependencyManager == 'NPM') { %>
+	"dependencies": {
+	    "bootstrap": "^3.3.6",
+	    "font-awesome": "^4.4.0",
+	    "jquery": "^2.1.4"
+	},
+	<% } %>
 	"devDependencies": {
 		"grunt": "~0.4.5",
 		"grunt-concurrent": "~0.5.0",
