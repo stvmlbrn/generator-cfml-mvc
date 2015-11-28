@@ -4,7 +4,7 @@ A Yeoman generator for scaffolding modern ColdFusion apps.
 ## Features
 * MVC style folder structure with [FW/1](https://github.com/framework-one/fw1)
 * Grunt build tool with file watching
-* Bower package manager
+* Bower or NPM to manage front-end dependencies
 * .editorconfig for consitent coding styles within text editors
 * Define application level datasource
 * Enable and define subsystems ([subsystems version 2.0](http://framework-one.github.io/documentation/using-subsystems.html#subsystems-10-vs-20))
@@ -28,8 +28,10 @@ Includes jshint, uglify, cssmin, and imagemin. It will watch for changes in all 
 
 If you define the 'assetsFolder' properly for each environment in the config.json file, you can load resources specific to your environment. For example `<script src='assets/#applciation.config.assetsFolder#/js/myfile.js'></script>` will load the minified file in production, but load your full source in development (helpful when troubleshooting js errors).
 
-## Bower Configuration
-Includes Bootstrap, jQuery, and Font Awesome and will install to `/assets/components`.
+## Front-End Dependencies
+Choose from Bower or NPM to manage your front-end dependencies. By default, Bootstrap, jQuery, and Font Awesome will be included. If using Bower, files will be installed to `/assets/components` and if using NPM files will be installed in the `node_modules` folder.
+
+You may also opt-out of using a front-end dependency manager by choosing 'None'.
 
 ## Options
 * `--skip-install`
