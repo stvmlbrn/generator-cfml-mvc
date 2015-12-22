@@ -26,7 +26,7 @@ A default layout will be generated with a simple bootstrap layout that loads all
 ## Grunt Configuration
 Includes jshint, uglify, cssmin, and imagemin. It will watch for changes in all relevant files located in `/assets/src` and minimize to `/assets/dist`.
 
-If you define the 'assetsFolder' properly for each environment in the config.json file, you can load resources specific to your environment. For example `<script src='assets/#applciation.config.assetsFolder#/js/myfile.js'></script>` will load the minified file in production, but load your full source in development (helpful when troubleshooting js errors).
+If you define the 'assetsFolder' properly for each environment in the config.json file, you can load resources specific to your environment. For example `<script src='assets/#application.config.assetsFolder#/js/myfile.js'></script>` will load the minified file in production, but load your full source in development (helpful when troubleshooting js errors).
 
 ## Front-End Dependencies
 Choose from Bower or NPM to manage your front-end dependencies. By default, Bootstrap, jQuery, and Font Awesome will be included. If using Bower, files will be installed to `/assets/components` and if using NPM files will be installed in the `node_modules` folder.
